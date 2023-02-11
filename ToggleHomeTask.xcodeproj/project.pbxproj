@@ -12,6 +12,7 @@
 		DB7AB3292997F54400ABB6D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB3272997F54400ABB6D4 /* Main.storyboard */; };
 		DB7AB32B2997F54600ABB6D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB32A2997F54600ABB6D4 /* Assets.xcassets */; };
 		DB7AB32E2997F54600ABB6D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB32C2997F54600ABB6D4 /* LaunchScreen.storyboard */; };
+		DB7AB3532998319400ABB6D4 /* TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB3522998319300ABB6D4 /* TimeEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		DB7AB32D2997F54600ABB6D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB7AB32F2997F54600ABB6D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB7AB3342997F54600ABB6D4 /* ToggleHomeTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToggleHomeTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB7AB3522998319300ABB6D4 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		DB7AB3202997F54400ABB6D4 /* ToggleHomeTask */ = {
 			isa = PBXGroup;
 			children = (
+				DB7AB3512998310D00ABB6D4 /* Domain */,
 				DB7AB3212997F54400ABB6D4 /* AppDelegate.swift */,
 				DB7AB3232997F54400ABB6D4 /* SceneDelegate.swift */,
 				DB7AB3272997F54400ABB6D4 /* Main.storyboard */,
@@ -89,6 +92,14 @@
 			children = (
 			);
 			path = ToggleHomeTaskTests;
+			sourceTree = "<group>";
+		};
+		DB7AB3512998310D00ABB6D4 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				DB7AB3522998319300ABB6D4 /* TimeEntry.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +205,7 @@
 			files = (
 				DB7AB3222997F54400ABB6D4 /* AppDelegate.swift in Sources */,
 				DB7AB3242997F54400ABB6D4 /* SceneDelegate.swift in Sources */,
+				DB7AB3532998319400ABB6D4 /* TimeEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
