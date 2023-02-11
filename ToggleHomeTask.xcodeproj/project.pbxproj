@@ -13,6 +13,7 @@
 		DB7AB32B2997F54600ABB6D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB32A2997F54600ABB6D4 /* Assets.xcassets */; };
 		DB7AB32E2997F54600ABB6D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB32C2997F54600ABB6D4 /* LaunchScreen.storyboard */; };
 		DB7AB3532998319400ABB6D4 /* TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB3522998319300ABB6D4 /* TimeEntry.swift */; };
+		DB7AB35C2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB35B2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		DB7AB32F2997F54600ABB6D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB7AB3342997F54600ABB6D4 /* ToggleHomeTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToggleHomeTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7AB3522998319300ABB6D4 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
+		DB7AB35B2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTimeEntryUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				DB7AB3512998310D00ABB6D4 /* Domain */,
+				DB7AB3552998347C00ABB6D4 /* Cache */,
 				DB7AB3212997F54400ABB6D4 /* AppDelegate.swift */,
 				DB7AB3232997F54400ABB6D4 /* SceneDelegate.swift */,
 				DB7AB3272997F54400ABB6D4 /* Main.storyboard */,
@@ -90,6 +93,7 @@
 		DB7AB3372997F54600ABB6D4 /* ToggleHomeTaskTests */ = {
 			isa = PBXGroup;
 			children = (
+				DB7AB356299838DB00ABB6D4 /* Cache */,
 			);
 			path = ToggleHomeTaskTests;
 			sourceTree = "<group>";
@@ -100,6 +104,21 @@
 				DB7AB3522998319300ABB6D4 /* TimeEntry.swift */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		DB7AB3552998347C00ABB6D4 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		DB7AB356299838DB00ABB6D4 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				DB7AB35B2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +174,7 @@
 					};
 					DB7AB3332997F54600ABB6D4 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 						TestTargetID = DB7AB31D2997F54400ABB6D4;
 					};
 				};
@@ -213,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB7AB35C2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,15 +442,22 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BTPQF57VMN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dantish.ToggleHomeTaskTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToggleHomeTask.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ToggleHomeTask";
@@ -441,11 +469,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BTPQF57VMN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dantish.ToggleHomeTaskTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
