@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		DB7AB3222997F54400ABB6D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB3212997F54400ABB6D4 /* AppDelegate.swift */; };
 		DB7AB3242997F54400ABB6D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB3232997F54400ABB6D4 /* SceneDelegate.swift */; };
-		DB7AB3292997F54400ABB6D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB3272997F54400ABB6D4 /* Main.storyboard */; };
+		DB7AB3292997F54400ABB6D4 /* TimeTracking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB3272997F54400ABB6D4 /* TimeTracking.storyboard */; };
 		DB7AB32B2997F54600ABB6D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB32A2997F54600ABB6D4 /* Assets.xcassets */; };
 		DB7AB32E2997F54600ABB6D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB32C2997F54600ABB6D4 /* LaunchScreen.storyboard */; };
 		DB7AB3532998319400ABB6D4 /* TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB3522998319300ABB6D4 /* TimeEntry.swift */; };
@@ -44,7 +44,7 @@
 		DB7AB31E2997F54400ABB6D4 /* ToggleHomeTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToggleHomeTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7AB3212997F54400ABB6D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB7AB3232997F54400ABB6D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DB7AB3282997F54400ABB6D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DB7AB3282997F54400ABB6D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TimeTracking.storyboard; sourceTree = "<group>"; };
 		DB7AB32A2997F54600ABB6D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB7AB32D2997F54600ABB6D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB7AB32F2997F54600ABB6D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,7 +112,6 @@
 				DBE4F162299A7E42003DB3EB /* UI */,
 				DB7AB3212997F54400ABB6D4 /* AppDelegate.swift */,
 				DB7AB3232997F54400ABB6D4 /* SceneDelegate.swift */,
-				DB7AB3272997F54400ABB6D4 /* Main.storyboard */,
 				DB7AB32A2997F54600ABB6D4 /* Assets.xcassets */,
 				DB7AB32C2997F54600ABB6D4 /* LaunchScreen.storyboard */,
 				DB7AB32F2997F54600ABB6D4 /* Info.plist */,
@@ -223,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				DBE4F164299A7F1D003DB3EB /* TimeTrackingViewController.swift */,
+				DB7AB3272997F54400ABB6D4 /* TimeTracking.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -311,7 +311,7 @@
 			files = (
 				DB7AB32E2997F54600ABB6D4 /* LaunchScreen.storyboard in Resources */,
 				DB7AB32B2997F54600ABB6D4 /* Assets.xcassets in Resources */,
-				DB7AB3292997F54400ABB6D4 /* Main.storyboard in Resources */,
+				DB7AB3292997F54400ABB6D4 /* TimeTracking.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,12 +368,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DB7AB3272997F54400ABB6D4 /* Main.storyboard */ = {
+		DB7AB3272997F54400ABB6D4 /* TimeTracking.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DB7AB3282997F54400ABB6D4 /* Base */,
 			);
-			name = Main.storyboard;
+			name = TimeTracking.storyboard;
 			sourceTree = "<group>";
 		};
 		DB7AB32C2997F54600ABB6D4 /* LaunchScreen.storyboard */ = {
@@ -513,7 +513,7 @@
 				INFOPLIST_FILE = ToggleHomeTask/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -541,7 +541,7 @@
 				INFOPLIST_FILE = ToggleHomeTask/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
