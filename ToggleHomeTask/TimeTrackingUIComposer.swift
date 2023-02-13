@@ -11,12 +11,13 @@ import Combine
 final class TimeTrackingUIComposer {
     private init() {}
 
-    static func timeTracking() -> TimeTrackingViewController {
-        let presentationAdapter = TimeTrackingPresentationAdapter()
+    static func timeTracking(onTimeEntryCreated: @escaping (TimeEntry) -> Void) -> TimeTrackingViewController {
+        let presentationAdapter = TimeTrackingPresentationAdapter(onTimeEntryCreated: onTimeEntryCreated)
         let timeTrackingVC = makeTimeTrackingViewController()
 
         presentationAdapter.presenter = TimeTrackingPresenter(
             view: WeakRefVirtualProxy(timeTrackingVC),
+            // TODO: Provide a more user-friendly formatter (like hh:mm:ss)
             stopwatchValueFormatter: String.init
         )
 

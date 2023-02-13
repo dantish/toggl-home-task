@@ -9,28 +9,40 @@ import Foundation
 import Combine
 
 final class TimeTrackingPresentationAdapter {
+    private let onTimeEntryCreated: (TimeEntry) -> Void
     private var cancellable: Cancellable?
+    private var startTime: Date?
     private var currentInterval = 0
 
     var presenter: TimeTrackingPresenter?
+
+    init(onTimeEntryCreated: @escaping (TimeEntry) -> Void) {
+        self.onTimeEntryCreated = onTimeEntryCreated
+    }
 
     func onViewLoaded() {
         presenter?.didLoadView()
     }
 
     func onStopwatchToggled() {
-        guard cancellable == nil else {
+        if let startTime {
+            self.startTime = nil
             cancellable = nil
             currentInterval = 0
             presenter?.didStopStopwatch()
-            return
+
+            return onTimeEntryCreated(TimeEntry(
+                id: UUID(),
+                startTime: startTime,
+                endTime: .now
+            ))
         }
 
+        startTime = .now
         presenter?.didStartStopwatch()
 
         cancellable = Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
-            .receive(on: DispatchQueue.main)
             .sink { [weak self] currentTime in
                 guard let self else { return }
                 self.currentInterval += 1
