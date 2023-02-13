@@ -14,16 +14,26 @@ protocol TimeTrackingView {
 
 final class TimeTrackingPresenter {
     let view: TimeTrackingView
+    let stopwatchValueFormatter: (Int) -> String
 
-    init(view: TimeTrackingView) {
+    init(view: TimeTrackingView, stopwatchValueFormatter: @escaping (Int) -> String) {
         self.view = view
+        self.stopwatchValueFormatter = stopwatchValueFormatter
     }
 
     func didLoadView() {
         view.display(TimeTrackingViewModel(
-            stopwatchValue: "0",
+            stopwatchValue: stopwatchValueFormatter(0),
             toggleActionTitle: "Start",
             isToggleActionDestructive: false
+        ))
+    }
+
+    func didUpdateStopwatch(with value: Int) {
+        view.display(TimeTrackingViewModel(
+            stopwatchValue: stopwatchValueFormatter(value),
+            toggleActionTitle: "Stop",
+            isToggleActionDestructive: true
         ))
     }
 }
@@ -46,11 +56,21 @@ final class TimeTrackingPresenterTests: XCTestCase {
         ])
     }
 
+    func test_didUpdateStopwatch_displaysFormattedValues() {
+        let (sut, view) = makeSUT()
+
+        sut.didUpdateStopwatch(with: 3723)
+
+        XCTAssertEqual(view.messages, [
+            .display(stopwatchValue: "3723", toggleActionTitle: "Stop", isToggleActionDestructive: true),
+        ])
+    }
+
     // MARK: - Helpers
 
-    private func makeSUT() -> (sut: TimeTrackingPresenter, view: ViewSpy) {
+    private func makeSUT(stopwatchValueFormatter: @escaping (Int) -> String = String.init) -> (sut: TimeTrackingPresenter, view: ViewSpy) {
         let view = ViewSpy()
-        let sut = TimeTrackingPresenter(view: view)
+        let sut = TimeTrackingPresenter(view: view, stopwatchValueFormatter: stopwatchValueFormatter)
         return (sut, view)
     }
 
