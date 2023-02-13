@@ -22,6 +22,7 @@
 		DBE4F152299A6A63003DB3EB /* CacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F151299A6A63003DB3EB /* CacheTestHelpers.swift */; };
 		DBE4F155299A705F003DB3EB /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F154299A705F003DB3EB /* SharedTestHelpers.swift */; };
 		DBE4F157299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F156299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift */; };
+		DBE4F15D299A7302003DB3EB /* InMemoryTimeEntriesStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F15C299A7302003DB3EB /* InMemoryTimeEntriesStoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		DBE4F151299A6A63003DB3EB /* CacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTestHelpers.swift; sourceTree = "<group>"; };
 		DBE4F154299A705F003DB3EB /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		DBE4F156299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTimeEntriesFromCacheUseCase.swift; sourceTree = "<group>"; };
+		DBE4F15C299A7302003DB3EB /* InMemoryTimeEntriesStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryTimeEntriesStoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				DBE4F149299A3C79003DB3EB /* Helpers */,
+				DBE4F15A299A72CB003DB3EB /* Infrastructure */,
 				DB7AB35B2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift */,
 				DBE4F14C299A3CE0003DB3EB /* LoadTimeEntriesFromCacheUseCaseTests.swift */,
 			);
@@ -159,6 +162,14 @@
 				DBE4F154299A705F003DB3EB /* SharedTestHelpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DBE4F15A299A72CB003DB3EB /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				DBE4F15C299A7302003DB3EB /* InMemoryTimeEntriesStoreTests.swift */,
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBE4F152299A6A63003DB3EB /* CacheTestHelpers.swift in Sources */,
+				DBE4F15D299A7302003DB3EB /* InMemoryTimeEntriesStoreTests.swift in Sources */,
 				DB7AB35C2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift in Sources */,
 				DBE4F155299A705F003DB3EB /* SharedTestHelpers.swift in Sources */,
 				DBE4F14B299A3C84003DB3EB /* TimeEntriesStoreSpy.swift in Sources */,
