@@ -36,6 +36,12 @@ final class InMemoryTimeEntriesStoreTests: XCTestCase {
         expect(sut, toRetrieve: .success([]))
     }
 
+    func test_retrieve_hasNoSideEffectsOnEmptyCache() {
+        let sut = makeSUT()
+
+        expect(sut, toRetrieveTwice: .success([]))
+    }
+
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
         let sut = makeSUT()
         let timeEntry = uniqueTimeEntry().local
@@ -94,6 +100,16 @@ final class InMemoryTimeEntriesStoreTests: XCTestCase {
         wait(for: [insertionExp], timeout: 1.0)
 
         return insertionError
+    }
+
+    func expect(
+        _ sut: TimeEntriesStore,
+        toRetrieveTwice expectedResult: TimeEntriesStore.RetrievalResult,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        expect(sut, toRetrieve: expectedResult, file: file, line: line)
+        expect(sut, toRetrieve: expectedResult, file: file, line: line)
     }
 
     func expect(
