@@ -16,12 +16,15 @@ import XCTest
 @testable import ToggleHomeTask
 
 final class InMemoryTimeEntriesStore: TimeEntriesStore {
-    func insert(_ timeEntry: ToggleHomeTask.LocalTimeEntry, completion: @escaping InsertionCompletion) {
+    private var timeEntry: LocalTimeEntry?
 
+    func insert(_ timeEntry: ToggleHomeTask.LocalTimeEntry, completion: @escaping InsertionCompletion) {
+        self.timeEntry = timeEntry
+        completion(.success(()))
     }
 
     func retrieve(completion: @escaping RetrievalCompletion) {
-        completion(.success([]))
+        completion(.success([timeEntry].compactMap { $0 }))
     }
 }
 
@@ -44,6 +47,29 @@ final class InMemoryTimeEntriesStoreTests: XCTestCase {
         }
 
         wait(for: [exp], timeout: 1.0)
+    }
+
+    func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
+        let sut = makeSUT()
+        let timeEntry = uniqueTimeEntry().local
+
+        let insertionExp = expectation(description: "Wait for cache insertion")
+        sut.insert(timeEntry) { _ in insertionExp.fulfill() }
+        wait(for: [insertionExp], timeout: 1.0)
+
+        let retrievalExp = expectation(description: "Wait for cache retrieval")
+        sut.retrieve { retrievedResult in
+            switch retrievedResult {
+            case let .success(receivedTimeEntries):
+                XCTAssertEqual(receivedTimeEntries, [timeEntry])
+
+            default:
+                XCTFail("Expected to retrieve found values, got \(retrievedResult) instead")
+            }
+
+            retrievalExp.fulfill()
+        }
+        wait(for: [retrievalExp], timeout: 1.0)
     }
 
     // MARK: - Helpers
