@@ -16,6 +16,7 @@
 		DB7AB35C2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB35B2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift */; };
 		DBE4F142299A38A7003DB3EB /* LocalTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */; };
 		DBE4F144299A3904003DB3EB /* TimeEntriesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */; };
+		DBE4F146299A3935003DB3EB /* CacheTimeEntryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		DB7AB35B2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTimeEntryUseCaseTests.swift; sourceTree = "<group>"; };
 		DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTimeEntry.swift; sourceTree = "<group>"; };
 		DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesStore.swift; sourceTree = "<group>"; };
+		DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTimeEntryUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			children = (
 				DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */,
 				DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */,
+				DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			files = (
 				DB7AB3222997F54400ABB6D4 /* AppDelegate.swift in Sources */,
 				DB7AB3242997F54400ABB6D4 /* SceneDelegate.swift in Sources */,
+				DBE4F146299A3935003DB3EB /* CacheTimeEntryUseCase.swift in Sources */,
 				DB7AB3532998319400ABB6D4 /* TimeEntry.swift in Sources */,
 				DBE4F142299A38A7003DB3EB /* LocalTimeEntry.swift in Sources */,
 				DBE4F144299A3904003DB3EB /* TimeEntriesStore.swift in Sources */,
