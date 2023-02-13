@@ -17,6 +17,7 @@ final class TimeEntriesStoreSpy: TimeEntriesStore {
     private(set) var receivedMessages: [Message] = []
 
     private var insertionCompletions: [InsertionCompletion] = []
+    private var retrievalCompletions: [RetrievalCompletion] = []
 
     func insert(_ timeEntry: LocalTimeEntry, completion: @escaping InsertionCompletion) {
         insertionCompletions.append(completion)
@@ -32,6 +33,11 @@ final class TimeEntriesStoreSpy: TimeEntriesStore {
     }
 
     func retrieve(completion: @escaping RetrievalCompletion) {
+        retrievalCompletions.append(completion)
         receivedMessages.append(.retrieve)
+    }
+
+    func completeRetrieval(with error: Error, at index: Int = 0) {
+        retrievalCompletions[index](.failure(error))
     }
 }
