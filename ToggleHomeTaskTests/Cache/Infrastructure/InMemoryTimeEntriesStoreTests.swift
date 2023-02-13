@@ -32,50 +32,55 @@ final class InMemoryTimeEntriesStoreTests: XCTestCase {
 
     func test_retrieve_deliversEmptyOnEmptyCache() {
         let sut = makeSUT()
-        let exp = expectation(description: "Wait for cache retrieval")
 
-        sut.retrieve { retrievedResult in
-            switch retrievedResult {
-            case .success([]):
-                break
-
-            default:
-                XCTFail("Expected to retrieve empty cache, got \(retrievedResult) instead")
-            }
-
-            exp.fulfill()
-        }
-
-        wait(for: [exp], timeout: 1.0)
+        expect(sut, toRetrieve: .success([]))
     }
 
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
         let sut = makeSUT()
         let timeEntry = uniqueTimeEntry().local
 
-        let insertionExp = expectation(description: "Wait for cache insertion")
-        sut.insert(timeEntry) { _ in insertionExp.fulfill() }
-        wait(for: [insertionExp], timeout: 1.0)
+        insert(timeEntry, to: sut)
 
-        let retrievalExp = expectation(description: "Wait for cache retrieval")
-        sut.retrieve { retrievedResult in
-            switch retrievedResult {
-            case let .success(receivedTimeEntries):
-                XCTAssertEqual(receivedTimeEntries, [timeEntry])
-
-            default:
-                XCTFail("Expected to retrieve found values, got \(retrievedResult) instead")
-            }
-
-            retrievalExp.fulfill()
-        }
-        wait(for: [retrievalExp], timeout: 1.0)
+        expect(sut, toRetrieve: .success([timeEntry]))
     }
 
     // MARK: - Helpers
 
     private func makeSUT() -> TimeEntriesStore {
         InMemoryTimeEntriesStore()
+    }
+
+    func insert(_ cache: LocalTimeEntry, to sut: TimeEntriesStore) {
+        let insertionExp = expectation(description: "Wait for cache insertion")
+        sut.insert(cache) { _ in insertionExp.fulfill() }
+        wait(for: [insertionExp], timeout: 1.0)
+    }
+
+    func expect(
+        _ sut: TimeEntriesStore,
+        toRetrieve expectedResult: TimeEntriesStore.RetrievalResult,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        let exp = expectation(description: "Wait for cache retrieval")
+
+        sut.retrieve { retrievedResult in
+            switch (expectedResult, retrievedResult) {
+            case (.failure, .failure):
+                break
+
+            case let (.success(expected), .success(retrieved)):
+                XCTAssertEqual(retrieved, expected, file: file, line: line)
+
+            default:
+                XCTFail("Expected to retrieve \(expectedResult), got \(retrievedResult) instead", file: file, line: line)
+            }
+
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1.0)
     }
 
 }
