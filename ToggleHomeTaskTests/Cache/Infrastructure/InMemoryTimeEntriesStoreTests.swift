@@ -45,16 +45,35 @@ final class InMemoryTimeEntriesStoreTests: XCTestCase {
         expect(sut, toRetrieve: .success([timeEntry]))
     }
 
+    func test_insert_deliversNoErrorOnEmptyCache() {
+        let sut = makeSUT()
+
+        let insertionError = insert(uniqueTimeEntry().local, to: sut)
+
+        XCTAssertNil(insertionError, "Expected to insert cache successfully")
+    }
+
     // MARK: - Helpers
 
     private func makeSUT() -> TimeEntriesStore {
         InMemoryTimeEntriesStore()
     }
 
-    func insert(_ cache: LocalTimeEntry, to sut: TimeEntriesStore) {
+    @discardableResult
+    func insert(_ cache: LocalTimeEntry, to sut: TimeEntriesStore) -> Error? {
         let insertionExp = expectation(description: "Wait for cache insertion")
-        sut.insert(cache) { _ in insertionExp.fulfill() }
+
+        var insertionError: Error?
+        sut.insert(cache) { result in
+            if case let .failure(error) = result {
+                insertionError = error
+            }
+
+            insertionExp.fulfill()
+        }
         wait(for: [insertionExp], timeout: 1.0)
+        
+        return insertionError
     }
 
     func expect(
