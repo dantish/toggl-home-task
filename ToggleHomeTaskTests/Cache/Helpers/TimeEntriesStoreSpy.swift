@@ -44,4 +44,8 @@ final class TimeEntriesStoreSpy: TimeEntriesStore {
     func completeRetrievalWithEmptyCache(at index: Int = 0) {
         retrievalCompletions[index](.success([]))
     }
+
+    func completeRetrieval(with timeEntries: [LocalTimeEntry], at index: Int = 0) {
+        retrievalCompletions[index](.success(timeEntries))
+    }
 }

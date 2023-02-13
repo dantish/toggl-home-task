@@ -22,8 +22,11 @@ final class LoadTimeEntriesFromCacheUseCase {
             switch result {
             case let .failure(error):
                 completion(.failure(error))
-            case .success:
-                completion(.success([]))
+                
+            case let .success(localTimeEntries):
+                completion(.success(localTimeEntries.map {
+                    TimeEntry(id: $0.id, startTime: $0.startTime, endTime: $0.endTime)
+                }))
             }
         }
     }
@@ -85,12 +88,42 @@ final class LoadTimeEntriesFromCacheUseCaseTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
 
+    func test_load_deliversCachedTimeEntriesOnNonEmptyCache() {
+        let (sut, store) = makeSUT()
+        let timeEntries = [uniqueTimeEntry(), uniqueTimeEntry()]
+        let localTimeEntries = timeEntries.map { LocalTimeEntry(id: $0.id, startTime: $0.startTime, endTime: $0.endTime) }
+        let exp = expectation(description: "Wait for load completion")
+
+        sut.load { receivedResult in
+            switch receivedResult {
+            case let .success(receivedTimeEntries):
+                XCTAssertEqual(receivedTimeEntries, timeEntries)
+
+            default:
+                XCTFail("Expected successful result with cached time entries, but got \(receivedResult) instead")
+            }
+
+            exp.fulfill()
+        }
+
+        store.completeRetrieval(with: localTimeEntries)
+        wait(for: [exp], timeout: 1.0)
+    }
+
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: LoadTimeEntriesFromCacheUseCase, store: TimeEntriesStoreSpy) {
         let store = TimeEntriesStoreSpy()
         let sut = LoadTimeEntriesFromCacheUseCase(store: store)
         return (sut, store)
+    }
+
+    private func uniqueTimeEntry() -> TimeEntry {
+        TimeEntry(
+            id: UUID(),
+            startTime: Date(timeIntervalSinceNow: -10),
+            endTime: Date()
+        )
     }
 
 }
