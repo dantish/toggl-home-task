@@ -17,6 +17,7 @@
 		DBE4F142299A38A7003DB3EB /* LocalTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */; };
 		DBE4F144299A3904003DB3EB /* TimeEntriesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */; };
 		DBE4F146299A3935003DB3EB /* CacheTimeEntryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */; };
+		DBE4F14B299A3C84003DB3EB /* TimeEntriesStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F14A299A3C84003DB3EB /* TimeEntriesStoreSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTimeEntry.swift; sourceTree = "<group>"; };
 		DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesStore.swift; sourceTree = "<group>"; };
 		DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTimeEntryUseCase.swift; sourceTree = "<group>"; };
+		DBE4F14A299A3C84003DB3EB /* TimeEntriesStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesStoreSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,9 +127,18 @@
 		DB7AB356299838DB00ABB6D4 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				DBE4F149299A3C79003DB3EB /* Helpers */,
 				DB7AB35B2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		DBE4F149299A3C79003DB3EB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DBE4F14A299A3C84003DB3EB /* TimeEntriesStoreSpy.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7AB35C2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift in Sources */,
+				DBE4F14B299A3C84003DB3EB /* TimeEntriesStoreSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

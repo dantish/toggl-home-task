@@ -82,27 +82,4 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
         )
     }
 
-    private final class TimeEntriesStoreSpy: TimeEntriesStore {
-        enum Message: Equatable {
-            case insert(LocalTimeEntry)
-        }
-
-        private(set) var receivedMessages: [Message] = []
-
-        private var insertionCompletions: [InsertionCompletion] = []
-
-        func insert(_ timeEntry: LocalTimeEntry, completion: @escaping InsertionCompletion) {
-            insertionCompletions.append(completion)
-            receivedMessages.append(.insert(timeEntry))
-        }
-
-        func completeInsertion(with error: Error, at index: Int = 0) {
-            insertionCompletions[index](.failure(error))
-        }
-
-        func completeInsertionSuccessfully(at index: Int = 0) {
-            insertionCompletions[index](.success(()))
-        }
-    }
-
 }
