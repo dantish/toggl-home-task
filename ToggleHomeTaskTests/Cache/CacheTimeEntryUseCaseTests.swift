@@ -42,7 +42,7 @@ final class CacheTimeEntryUseCase {
             case let .failure(error):
                 completion(.failure(error))
             default:
-                break
+                completion(.success(()))
             }
         }
     }
@@ -90,6 +90,22 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
         XCTAssertEqual(receivedError as NSError?, insertionError)
     }
 
+    func test_save_succeedsOnSuccessfulInsertion() {
+        let (sut, store) = makeSUT()
+        let exp = expectation(description: "Wait for save completion")
+
+        sut.save(uniqueTimeEntry()) { result in
+            if case let .failure(error) = result {
+                XCTFail("Expected to complete successfully, but got \(error) instead")
+            }
+
+            exp.fulfill()
+        }
+
+        store.completeInsertionSuccessfully()
+        wait(for: [exp], timeout: 1.0)
+    }
+
     // MARK: - Helpers
 
     private func makeSUT() -> (sut: CacheTimeEntryUseCase, store: TimeEntriesStoreSpy) {
@@ -122,6 +138,10 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
 
         func completeInsertion(with error: Error, at index: Int = 0) {
             insertionCompletions[index](.failure(error))
+        }
+
+        func completeInsertionSuccessfully(at index: Int = 0) {
+            insertionCompletions[index](.success(()))
         }
     }
 
