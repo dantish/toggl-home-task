@@ -20,6 +20,10 @@ final class TimeEntriesViewController: UITableViewController, TimeEntriesView, T
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.refreshControl = refreshControl
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         refresh()
     }
