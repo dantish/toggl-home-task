@@ -28,14 +28,23 @@ final class CacheTimeEntryUseCase {
         self.store = store
     }
 
-    func save(_ timeEntry: TimeEntry) {
+    public typealias SaveResult = Result<Void, Error>
+
+    func save(_ timeEntry: TimeEntry, completion: @escaping (SaveResult) -> Void) {
         let local = LocalTimeEntry(
             id: timeEntry.id,
             startTime: timeEntry.startTime,
             endTime: timeEntry.endTime
         )
 
-        store.insert(local) { _ in }
+        store.insert(local) { result in
+            switch result {
+            case let .failure(error):
+                completion(.failure(error))
+            default:
+                break
+            }
+        }
     }
 }
 
@@ -56,9 +65,29 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
             endTime: model.endTime
         )
 
-        sut.save(model)
+        sut.save(model) { _ in }
 
         XCTAssertEqual(store.receivedMessages, [.insert(local)])
+    }
+
+    func test_save_failsOnInsertionError() {
+        let (sut, store) = makeSUT()
+        let insertionError = NSError(domain: "any error", code: 0)
+        let exp = expectation(description: "Wait for save completion")
+
+        var receivedError: Error?
+        sut.save(uniqueTimeEntry()) { result in
+            if case let .failure(error) = result {
+                receivedError = error
+            }
+
+            exp.fulfill()
+        }
+
+        store.completeInsertion(with: insertionError)
+        wait(for: [exp], timeout: 1.0)
+
+        XCTAssertEqual(receivedError as NSError?, insertionError)
     }
 
     // MARK: - Helpers
@@ -84,8 +113,15 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
 
         private(set) var receivedMessages: [Message] = []
 
+        private var insertionCompletions: [InsertionCompletion] = []
+
         func insert(_ timeEntry: LocalTimeEntry, completion: @escaping InsertionCompletion) {
+            insertionCompletions.append(completion)
             receivedMessages.append(.insert(timeEntry))
+        }
+
+        func completeInsertion(with error: Error, at index: Int = 0) {
+            insertionCompletions[index](.failure(error))
         }
     }
 
