@@ -11,7 +11,7 @@ import Combine
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
-    private lazy var store: TimeEntriesStore = InMemoryTimeEntriesStore()
+    private lazy var store: TimeEntriesStore = CodableTimeEntriesStore()
 
     private lazy var cacheTimeEntryUseCase = CacheTimeEntryUseCase(store: store)
 
