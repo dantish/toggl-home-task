@@ -8,13 +8,6 @@
 import XCTest
 @testable import ToggleHomeTask
 
-protocol TimeEntriesStore {
-    typealias InsertionResult = Result<Void, Error>
-    typealias InsertionCompletion = (InsertionResult) -> Void
-
-    func insert(_ timeEntry: LocalTimeEntry, completion: @escaping InsertionCompletion)
-}
-
 final class CacheTimeEntryUseCase {
     let store: TimeEntriesStore
 
