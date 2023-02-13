@@ -24,11 +24,19 @@ final class LoadTimeEntriesFromCacheUseCase {
                 completion(.failure(error))
                 
             case let .success(localTimeEntries):
-                completion(.success(localTimeEntries.map {
-                    TimeEntry(id: $0.id, startTime: $0.startTime, endTime: $0.endTime)
-                }))
+                completion(.success(localTimeEntries.map { $0.toModel() }))
             }
         }
+    }
+}
+
+private extension LocalTimeEntry {
+    func toModel() -> TimeEntry {
+        TimeEntry(
+            id: id,
+            startTime: startTime,
+            endTime: endTime
+        )
     }
 }
 
