@@ -11,8 +11,14 @@ import Combine
 final class TimeEntriesUIComposer {
     private init() {}
 
-    static func timeEntriesComposedWith(timeEntriesLoader: @escaping () -> AnyPublisher<[TimeEntry], Error>) -> TimeEntriesViewController {
-        let presentationAdapter = TimeEntriesLoaderPresentationAdapter(timeEntriesLoader: timeEntriesLoader)
+    static func timeEntriesComposedWith(
+        timeEntriesLoader: @escaping () -> AnyPublisher<[TimeEntry], Error>,
+        onTimeEntryRemoved: @escaping (TimeEntry) -> Void
+    ) -> TimeEntriesViewController {
+        let presentationAdapter = TimeEntriesLoaderPresentationAdapter(
+            timeEntriesLoader: timeEntriesLoader,
+            onTimeEntryRemoved: onTimeEntryRemoved
+        )
         let timeEntriesVC = TimeEntriesViewController()
 
         presentationAdapter.presenter = TimeEntriesPresenter(
@@ -21,6 +27,7 @@ final class TimeEntriesUIComposer {
         )
 
         timeEntriesVC.onRefresh = presentationAdapter.onRefresh
+        timeEntriesVC.onRemove = presentationAdapter.onRemove
 
         return timeEntriesVC
     }

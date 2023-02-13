@@ -13,6 +13,7 @@ final class TimeEntriesViewController: UITableViewController, TimeEntriesView, T
     }
 
     var onRefresh: (() -> Void)?
+    var onRemove: ((Int) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,5 +64,13 @@ final class TimeEntriesViewController: UITableViewController, TimeEntriesView, T
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        UISwipeActionsConfiguration(actions: [
+            UIContextualAction(style: .destructive, title: "Remove") { [weak self] _,_,_ in
+                self?.onRemove?(indexPath.row)
+            }
+        ])
     }
 }
