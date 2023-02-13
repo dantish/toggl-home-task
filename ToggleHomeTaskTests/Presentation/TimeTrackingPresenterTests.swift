@@ -29,6 +29,14 @@ final class TimeTrackingPresenter {
         ))
     }
 
+    func didStartStopwatch() {
+        view.display(TimeTrackingViewModel(
+            stopwatchValue: stopwatchValueFormatter(0),
+            toggleActionTitle: "Stop",
+            isToggleActionDestructive: true
+        ))
+    }
+
     func didUpdateStopwatch(with value: Int) {
         view.display(TimeTrackingViewModel(
             stopwatchValue: stopwatchValueFormatter(value),
@@ -36,6 +44,8 @@ final class TimeTrackingPresenter {
             isToggleActionDestructive: true
         ))
     }
+
+
 }
 
 final class TimeTrackingPresenterTests: XCTestCase {
@@ -53,6 +63,16 @@ final class TimeTrackingPresenterTests: XCTestCase {
 
         XCTAssertEqual(view.messages, [
             .display(stopwatchValue: "0", toggleActionTitle: "Start", isToggleActionDestructive: false),
+        ])
+    }
+
+    func test_didStartStopwatch_displaysUpdatedValues() {
+        let (sut, view) = makeSUT()
+
+        sut.didStartStopwatch()
+
+        XCTAssertEqual(view.messages, [
+            .display(stopwatchValue: "0", toggleActionTitle: "Stop", isToggleActionDestructive: true),
         ])
     }
 
