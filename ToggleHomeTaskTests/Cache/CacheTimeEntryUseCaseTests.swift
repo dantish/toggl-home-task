@@ -27,7 +27,7 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
 
     func test_save_failsOnInsertionError() {
         let (sut, store) = makeSUT()
-        let insertionError = NSError(domain: "any error", code: 0)
+        let insertionError = anyNSError()
 
         expect(sut, toCompleteWithError: insertionError, when: {
             store.completeInsertion(with: insertionError)

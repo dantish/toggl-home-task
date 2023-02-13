@@ -58,7 +58,7 @@ final class LoadTimeEntriesFromCacheUseCaseTests: XCTestCase {
 
     func test_load_failsOnRetrievalError() {
         let (sut, store) = makeSUT()
-        let retrievalError = NSError(domain: "any error", code: 0)
+        let retrievalError = anyNSError()
 
         expect(sut, toCompleteWith: .failure(retrievalError), when: {
             store.completeRetrieval(with: retrievalError)
@@ -86,7 +86,7 @@ final class LoadTimeEntriesFromCacheUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
 
         sut.load { _ in }
-        store.completeRetrieval(with: NSError(domain: "any error", code: 0))
+        store.completeRetrieval(with: anyNSError())
 
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
