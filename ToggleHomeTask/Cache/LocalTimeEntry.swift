@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocalTimeEntry: Equatable {
+struct LocalTimeEntry: Equatable, Codable {
     let id: UUID
     let startTime: Date
     let endTime: Date

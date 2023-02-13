@@ -28,6 +28,7 @@
 		DB9282DF299AEC93006BAB86 /* TimeEntriesPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9282DE299AEC93006BAB86 /* TimeEntriesPresentationAdapter.swift */; };
 		DB9282E1299AF1CF006BAB86 /* RemoveTimeEntryFromCacheUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9282E0299AF1CF006BAB86 /* RemoveTimeEntryFromCacheUseCase.swift */; };
 		DB9282E3299AF265006BAB86 /* RemoveTimeEntryFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9282E2299AF265006BAB86 /* RemoveTimeEntryFromCacheUseCaseTests.swift */; };
+		DB9282E6299AF9ED006BAB86 /* CodableTimeEntriesStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9282E5299AF9ED006BAB86 /* CodableTimeEntriesStoreTests.swift */; };
 		DBE4F142299A38A7003DB3EB /* LocalTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */; };
 		DBE4F144299A3904003DB3EB /* TimeEntriesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */; };
 		DBE4F146299A3935003DB3EB /* CacheTimeEntryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */; };
@@ -76,6 +77,7 @@
 		DB9282DE299AEC93006BAB86 /* TimeEntriesPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesPresentationAdapter.swift; sourceTree = "<group>"; };
 		DB9282E0299AF1CF006BAB86 /* RemoveTimeEntryFromCacheUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveTimeEntryFromCacheUseCase.swift; sourceTree = "<group>"; };
 		DB9282E2299AF265006BAB86 /* RemoveTimeEntryFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveTimeEntryFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		DB9282E5299AF9ED006BAB86 /* CodableTimeEntriesStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableTimeEntriesStoreTests.swift; sourceTree = "<group>"; };
 		DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTimeEntry.swift; sourceTree = "<group>"; };
 		DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesStore.swift; sourceTree = "<group>"; };
 		DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTimeEntryUseCase.swift; sourceTree = "<group>"; };
@@ -209,6 +211,14 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		DB9282E4299AF9D1006BAB86 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				DB9282E5299AF9ED006BAB86 /* CodableTimeEntriesStoreTests.swift */,
+			);
+			path = Codable;
+			sourceTree = "<group>";
+		};
 		DBE4F149299A3C79003DB3EB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				DBE4F15F299A7D69003DB3EB /* InMemory */,
+				DB9282E4299AF9D1006BAB86 /* Codable */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -367,6 +378,7 @@
 				DB7AB3242997F54400ABB6D4 /* SceneDelegate.swift in Sources */,
 				DBE4F146299A3935003DB3EB /* CacheTimeEntryUseCase.swift in Sources */,
 				DB7AB3532998319400ABB6D4 /* TimeEntry.swift in Sources */,
+				DB9282E6299AF9ED006BAB86 /* CodableTimeEntriesStoreTests.swift in Sources */,
 				DB9282DF299AEC93006BAB86 /* TimeEntriesPresentationAdapter.swift in Sources */,
 				DBE4F165299A7F1D003DB3EB /* TimeTrackingViewController.swift in Sources */,
 				DB9282C5299ACCF4006BAB86 /* TimeTrackingPresenter.swift in Sources */,
