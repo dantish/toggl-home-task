@@ -16,15 +16,15 @@ import XCTest
 @testable import ToggleHomeTask
 
 final class InMemoryTimeEntriesStore: TimeEntriesStore {
-    private var timeEntry: LocalTimeEntry?
+    private var timeEntries: [LocalTimeEntry] = []
 
     func insert(_ timeEntry: ToggleHomeTask.LocalTimeEntry, completion: @escaping InsertionCompletion) {
-        self.timeEntry = timeEntry
+        timeEntries.append(timeEntry)
         completion(.success(()))
     }
 
     func retrieve(completion: @escaping RetrievalCompletion) {
-        completion(.success([timeEntry].compactMap { $0 }))
+        completion(.success(timeEntries))
     }
 }
 
@@ -60,6 +60,17 @@ final class InMemoryTimeEntriesStoreTests: XCTestCase {
         let insertionError = insert(uniqueTimeEntry().local, to: sut)
 
         XCTAssertNil(insertionError, "Expected to insert additional cache successfully")
+    }
+
+    func test_insert_appendsToPreviouslyInsertedCacheValues() {
+        let sut = makeSUT()
+        let previousTimeEntry = uniqueTimeEntry().local
+        insert(previousTimeEntry, to: sut)
+
+        let newTimeEntry = uniqueTimeEntry().local
+        insert(newTimeEntry, to: sut)
+
+        expect(sut, toRetrieve: .success([previousTimeEntry, newTimeEntry]))
     }
 
     // MARK: - Helpers
