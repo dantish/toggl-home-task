@@ -7,12 +7,6 @@
 
 import UIKit
 
-struct TimeTrackingViewModel {
-    let stopwatchValue: String
-    let toggleActionTitle: String
-    let isToggleActionDestructive: Bool
-}
-
 final class TimeTrackingViewController: UIViewController {
     @IBOutlet weak var stopwatchLabel: UILabel!
     @IBOutlet weak var toggleButton: UIButton!

@@ -14,6 +14,7 @@
 		DB7AB32E2997F54600ABB6D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7AB32C2997F54600ABB6D4 /* LaunchScreen.storyboard */; };
 		DB7AB3532998319400ABB6D4 /* TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB3522998319300ABB6D4 /* TimeEntry.swift */; };
 		DB7AB35C2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7AB35B2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift */; };
+		DB9282BE299AC3DD006BAB86 /* TimeTrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9282BD299AC3DD006BAB86 /* TimeTrackingViewModel.swift */; };
 		DBE4F142299A38A7003DB3EB /* LocalTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */; };
 		DBE4F144299A3904003DB3EB /* TimeEntriesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */; };
 		DBE4F146299A3935003DB3EB /* CacheTimeEntryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */; };
@@ -48,6 +49,7 @@
 		DB7AB3342997F54600ABB6D4 /* ToggleHomeTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToggleHomeTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7AB3522998319300ABB6D4 /* TimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntry.swift; sourceTree = "<group>"; };
 		DB7AB35B2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTimeEntryUseCaseTests.swift; sourceTree = "<group>"; };
+		DB9282BD299AC3DD006BAB86 /* TimeTrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackingViewModel.swift; sourceTree = "<group>"; };
 		DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTimeEntry.swift; sourceTree = "<group>"; };
 		DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesStore.swift; sourceTree = "<group>"; };
 		DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTimeEntryUseCase.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			children = (
 				DB7AB3512998310D00ABB6D4 /* Domain */,
 				DB7AB3552998347C00ABB6D4 /* Cache */,
+				DB9282BC299AC3CB006BAB86 /* Presentation */,
 				DBE4F162299A7E42003DB3EB /* UI */,
 				DB7AB3212997F54400ABB6D4 /* AppDelegate.swift */,
 				DB7AB3232997F54400ABB6D4 /* SceneDelegate.swift */,
@@ -151,6 +154,14 @@
 				DBE4F14C299A3CE0003DB3EB /* LoadTimeEntriesFromCacheUseCaseTests.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		DB9282BC299AC3CB006BAB86 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				DB9282BD299AC3DD006BAB86 /* TimeTrackingViewModel.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		DBE4F149299A3C79003DB3EB /* Helpers */ = {
@@ -310,6 +321,7 @@
 				DBE4F146299A3935003DB3EB /* CacheTimeEntryUseCase.swift in Sources */,
 				DB7AB3532998319400ABB6D4 /* TimeEntry.swift in Sources */,
 				DBE4F165299A7F1D003DB3EB /* TimeTrackingViewController.swift in Sources */,
+				DB9282BE299AC3DD006BAB86 /* TimeTrackingViewModel.swift in Sources */,
 				DBE4F142299A38A7003DB3EB /* LocalTimeEntry.swift in Sources */,
 				DBE4F144299A3904003DB3EB /* TimeEntriesStore.swift in Sources */,
 				DBE4F161299A7D78003DB3EB /* InMemoryTimeEntriesStore.swift in Sources */,
