@@ -15,6 +15,11 @@ final class InMemoryTimeEntriesStore: TimeEntriesStore {
         completion(.success(()))
     }
 
+    func delete(_ timeEntry: LocalTimeEntry, completion: @escaping DeletionCompletion) {
+        timeEntries.removeAll { $0 == timeEntry }
+        completion(.success(()))
+    }
+
     func retrieve(completion: @escaping RetrievalCompletion) {
         completion(.success(timeEntries))
     }

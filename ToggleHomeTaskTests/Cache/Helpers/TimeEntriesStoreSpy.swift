@@ -11,12 +11,14 @@ import Foundation
 final class TimeEntriesStoreSpy: TimeEntriesStore {
     enum Message: Equatable {
         case insert(LocalTimeEntry)
+        case delete(LocalTimeEntry)
         case retrieve
     }
 
     private(set) var receivedMessages: [Message] = []
 
     private var insertionCompletions: [InsertionCompletion] = []
+    private var deletionCompletions: [DeletionCompletion] = []
     private var retrievalCompletions: [RetrievalCompletion] = []
 
     func insert(_ timeEntry: LocalTimeEntry, completion: @escaping InsertionCompletion) {
@@ -30,6 +32,19 @@ final class TimeEntriesStoreSpy: TimeEntriesStore {
 
     func completeInsertionSuccessfully(at index: Int = 0) {
         insertionCompletions[index](.success(()))
+    }
+
+    func delete(_ timeEntry: LocalTimeEntry, completion: @escaping DeletionCompletion) {
+        deletionCompletions.append(completion)
+        receivedMessages.append(.delete(timeEntry))
+    }
+
+    func completeDeletion(with error: Error, at index: Int = 0) {
+        deletionCompletions[index](.failure(error))
+    }
+
+    func completeDeletionSuccessfully(at index: Int = 0) {
+        deletionCompletions[index](.success(()))
     }
 
     func retrieve(completion: @escaping RetrievalCompletion) {

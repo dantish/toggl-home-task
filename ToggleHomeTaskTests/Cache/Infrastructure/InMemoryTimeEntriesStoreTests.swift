@@ -75,6 +75,45 @@ final class InMemoryTimeEntriesStoreTests: XCTestCase {
         expect(sut, toRetrieve: .success([previousTimeEntry, newTimeEntry]))
     }
 
+    func test_delete_deliversNoErrorOnEmptyCache() {
+        let sut = makeSUT()
+
+        let deletionError = insert(uniqueTimeEntry().local, to: sut)
+
+        XCTAssertNil(deletionError, "Expected to delete cache successfully")
+    }
+
+    func test_delete_deliversNoErrorOnNonEmptyCacheWithoutEntryToBeDeleted() {
+        let sut = makeSUT()
+        insert(uniqueTimeEntry().local, to: sut)
+
+        let deletionError = delete(uniqueTimeEntry().local, to: sut)
+
+        XCTAssertNil(deletionError, "Expected to delete cache successfully")
+    }
+
+    func test_delete_removesEntryFromPreviouslyInsertedCacheValuesWhenLastEntryLeft() {
+        let sut = makeSUT()
+        let timeEntry = uniqueTimeEntry().local
+        insert(timeEntry, to: sut)
+
+        delete(timeEntry, to: sut)
+
+        expect(sut, toRetrieve: .success([]))
+    }
+
+    func test_delete_removesEntryFromPreviouslyInsertedCacheValues() {
+        let sut = makeSUT()
+        let timeEntry0 = uniqueTimeEntry().local
+        let timeEntry1 = uniqueTimeEntry().local
+        insert(timeEntry0, to: sut)
+        insert(timeEntry1, to: sut)
+
+        delete(timeEntry0, to: sut)
+
+        expect(sut, toRetrieve: .success([timeEntry1]))
+    }
+
     func test_storeSideEffects_runSerially() {
         let sut = makeSUT()
         var completedOperationsInOrder = [XCTestExpectation]()
@@ -123,6 +162,23 @@ final class InMemoryTimeEntriesStoreTests: XCTestCase {
         wait(for: [insertionExp], timeout: 1.0)
 
         return insertionError
+    }
+
+    @discardableResult
+    func delete(_ cache: LocalTimeEntry, to sut: TimeEntriesStore) -> Error? {
+        let deletionExp = expectation(description: "Wait for cache deletion")
+
+        var deletionError: Error?
+        sut.delete(cache) { result in
+            if case let .failure(error) = result {
+                deletionError = error
+            }
+
+            deletionExp.fulfill()
+        }
+        wait(for: [deletionExp], timeout: 1.0)
+
+        return deletionError
     }
 
     func expect(
