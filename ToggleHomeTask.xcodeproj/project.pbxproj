@@ -21,6 +21,7 @@
 		DBE4F14D299A3CE0003DB3EB /* LoadTimeEntriesFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F14C299A3CE0003DB3EB /* LoadTimeEntriesFromCacheUseCaseTests.swift */; };
 		DBE4F152299A6A63003DB3EB /* CacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F151299A6A63003DB3EB /* CacheTestHelpers.swift */; };
 		DBE4F155299A705F003DB3EB /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F154299A705F003DB3EB /* SharedTestHelpers.swift */; };
+		DBE4F157299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F156299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		DBE4F14C299A3CE0003DB3EB /* LoadTimeEntriesFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTimeEntriesFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		DBE4F151299A6A63003DB3EB /* CacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTestHelpers.swift; sourceTree = "<group>"; };
 		DBE4F154299A705F003DB3EB /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
+		DBE4F156299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTimeEntriesFromCacheUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */,
 				DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */,
 				DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */,
+				DBE4F156299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7AB3222997F54400ABB6D4 /* AppDelegate.swift in Sources */,
+				DBE4F157299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift in Sources */,
 				DB7AB3242997F54400ABB6D4 /* SceneDelegate.swift in Sources */,
 				DBE4F146299A3935003DB3EB /* CacheTimeEntryUseCase.swift in Sources */,
 				DB7AB3532998319400ABB6D4 /* TimeEntry.swift in Sources */,
