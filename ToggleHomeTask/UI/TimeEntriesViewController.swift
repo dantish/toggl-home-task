@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TimeEntriesViewController: UITableViewController {
+final class TimeEntriesViewController: UITableViewController, TimeEntriesView, TimeEntriesLoadingView {
     private var tableModel = [TimeEntryViewModel]() {
         didSet { tableView.reloadData() }
     }
@@ -30,6 +30,12 @@ final class TimeEntriesViewController: UITableViewController {
 
     public func display(_ viewModels: [TimeEntryViewModel]) {
         tableModel = viewModels
+    }
+
+    public func display(_ viewModel: TimeEntriesLoadingViewModel) {
+        viewModel.isLoading
+            ? tableView.refreshControl?.beginRefreshing()
+            : tableView.refreshControl?.endRefreshing()
     }
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

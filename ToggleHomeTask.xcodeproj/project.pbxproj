@@ -24,6 +24,8 @@
 		DB9282D7299AE9F2006BAB86 /* TimeEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9282D6299AE9F2006BAB86 /* TimeEntriesPresenter.swift */; };
 		DB9282D9299AEA0E006BAB86 /* TimeEntriesLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9282D8299AEA0E006BAB86 /* TimeEntriesLoadingViewModel.swift */; };
 		DB9282DB299AEA2A006BAB86 /* TimeEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9282DA299AEA2A006BAB86 /* TimeEntryViewModel.swift */; };
+		DB9282DD299AEB14006BAB86 /* TimeEntriesUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9282DC299AEB14006BAB86 /* TimeEntriesUIComposer.swift */; };
+		DB9282DF299AEC93006BAB86 /* TimeEntriesPresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9282DE299AEC93006BAB86 /* TimeEntriesPresentationAdapter.swift */; };
 		DBE4F142299A38A7003DB3EB /* LocalTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */; };
 		DBE4F144299A3904003DB3EB /* TimeEntriesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */; };
 		DBE4F146299A3935003DB3EB /* CacheTimeEntryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */; };
@@ -68,6 +70,8 @@
 		DB9282D6299AE9F2006BAB86 /* TimeEntriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesPresenter.swift; sourceTree = "<group>"; };
 		DB9282D8299AEA0E006BAB86 /* TimeEntriesLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesLoadingViewModel.swift; sourceTree = "<group>"; };
 		DB9282DA299AEA2A006BAB86 /* TimeEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryViewModel.swift; sourceTree = "<group>"; };
+		DB9282DC299AEB14006BAB86 /* TimeEntriesUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesUIComposer.swift; sourceTree = "<group>"; };
+		DB9282DE299AEC93006BAB86 /* TimeEntriesPresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesPresentationAdapter.swift; sourceTree = "<group>"; };
 		DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTimeEntry.swift; sourceTree = "<group>"; };
 		DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesStore.swift; sourceTree = "<group>"; };
 		DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTimeEntryUseCase.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 				DB7AB3232997F54400ABB6D4 /* SceneDelegate.swift */,
 				DB9282C8299ACE6D006BAB86 /* TimeTrackingUIComposer.swift */,
 				DB9282CA299AD537006BAB86 /* TimeTrackingPresentationAdapter.swift */,
+				DB9282DC299AEB14006BAB86 /* TimeEntriesUIComposer.swift */,
+				DB9282DE299AEC93006BAB86 /* TimeEntriesPresentationAdapter.swift */,
 				DB7AB32A2997F54600ABB6D4 /* Assets.xcassets */,
 				DB7AB32C2997F54600ABB6D4 /* LaunchScreen.storyboard */,
 				DB7AB32F2997F54600ABB6D4 /* Info.plist */,
@@ -355,6 +361,7 @@
 				DB7AB3242997F54400ABB6D4 /* SceneDelegate.swift in Sources */,
 				DBE4F146299A3935003DB3EB /* CacheTimeEntryUseCase.swift in Sources */,
 				DB7AB3532998319400ABB6D4 /* TimeEntry.swift in Sources */,
+				DB9282DF299AEC93006BAB86 /* TimeEntriesPresentationAdapter.swift in Sources */,
 				DBE4F165299A7F1D003DB3EB /* TimeTrackingViewController.swift in Sources */,
 				DB9282C5299ACCF4006BAB86 /* TimeTrackingPresenter.swift in Sources */,
 				DB9282BE299AC3DD006BAB86 /* TimeTrackingViewModel.swift in Sources */,
@@ -365,6 +372,7 @@
 				DBE4F144299A3904003DB3EB /* TimeEntriesStore.swift in Sources */,
 				DBE4F161299A7D78003DB3EB /* InMemoryTimeEntriesStore.swift in Sources */,
 				DB9282CB299AD537006BAB86 /* TimeTrackingPresentationAdapter.swift in Sources */,
+				DB9282DD299AEB14006BAB86 /* TimeEntriesUIComposer.swift in Sources */,
 				DB9282D7299AE9F2006BAB86 /* TimeEntriesPresenter.swift in Sources */,
 				DB9282C9299ACE6D006BAB86 /* TimeTrackingUIComposer.swift in Sources */,
 			);
