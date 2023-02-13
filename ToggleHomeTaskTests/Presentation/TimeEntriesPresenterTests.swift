@@ -7,8 +7,24 @@
 
 import XCTest
 
-final class TimeEntriesPresenter {
+struct TimeEntriesLoadingViewModel {
+    public let isLoading: Bool
+}
 
+protocol TimeEntriesLoadingView {
+    func display(_ viewModel: TimeEntriesLoadingViewModel)
+}
+
+final class TimeEntriesPresenter {
+    let loadingView: TimeEntriesLoadingView
+
+    init(loadingView: TimeEntriesLoadingView) {
+        self.loadingView = loadingView
+    }
+
+    func didStartLoadingTimeEntries() {
+        loadingView.display(TimeEntriesLoadingViewModel(isLoading: true))
+    }
 }
 
 final class TimeEntriesPresenterTests: XCTestCase {
@@ -19,19 +35,32 @@ final class TimeEntriesPresenterTests: XCTestCase {
         XCTAssertTrue(view.messages.isEmpty, "Expected no view messages")
     }
 
+    func test_didStartLoadingTimeEntries_startsLoading() {
+        let (sut, view) = makeSUT()
+
+        sut.didStartLoadingTimeEntries()
+
+        XCTAssertEqual(view.messages, [.display(isLoading: true)])
+    }
+
     // MARK: - Helpers
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: TimeEntriesPresenter, view: ViewSpy) {
         let view = ViewSpy()
-        let sut = TimeEntriesPresenter()
+        let sut = TimeEntriesPresenter(loadingView: view)
         return (sut, view)
     }
 
-    private class ViewSpy {
+    private class ViewSpy: TimeEntriesLoadingView {
         enum Message: Hashable {
+            case display(isLoading: Bool)
         }
 
-        let messages: [Message] = []
+        private(set) var messages: [Message] = []
+
+        func display(_ viewModel: TimeEntriesLoadingViewModel) {
+            messages.append(.display(isLoading: viewModel.isLoading))
+        }
     }
 
 }
