@@ -8,16 +8,49 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Time Tracking View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TimeTrackingViewController" customModule="ToggleHomeTask" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OQu-oH-Iij">
+                                <rect key="frame" x="98.333333333333329" y="326" width="196.33333333333337" height="225"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hn-9j-fso">
+                                        <rect key="frame" x="77.666666666666671" y="0.0" width="41.333333333333329" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o42-dO-270">
+                                        <rect key="frame" x="0.0" y="28.333333333333314" width="196.33333333333334" height="196.66666666666666"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="o42-dO-270" secondAttribute="height" multiplier="1:1" id="Gvo-zb-7Rq"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="switchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5eB-B8-dIn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OQu-oH-Iij" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Sac-Eb-YpR"/>
+                            <constraint firstItem="o42-dO-270" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="c14-0H-ruN"/>
+                            <constraint firstItem="OQu-oH-Iij" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gkE-jI-g0E"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="stopwatchLabel" destination="0Hn-9j-fso" id="Ucc-4P-ptm"/>
+                        <outlet property="toggleButton" destination="o42-dO-270" id="xfl-oy-CFt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

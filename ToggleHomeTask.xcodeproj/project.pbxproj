@@ -24,6 +24,7 @@
 		DBE4F157299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F156299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift */; };
 		DBE4F15D299A7302003DB3EB /* InMemoryTimeEntriesStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F15C299A7302003DB3EB /* InMemoryTimeEntriesStoreTests.swift */; };
 		DBE4F161299A7D78003DB3EB /* InMemoryTimeEntriesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F160299A7D78003DB3EB /* InMemoryTimeEntriesStore.swift */; };
+		DBE4F165299A7F1D003DB3EB /* TimeTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F164299A7F1D003DB3EB /* TimeTrackingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		DBE4F156299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTimeEntriesFromCacheUseCase.swift; sourceTree = "<group>"; };
 		DBE4F15C299A7302003DB3EB /* InMemoryTimeEntriesStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryTimeEntriesStoreTests.swift; sourceTree = "<group>"; };
 		DBE4F160299A7D78003DB3EB /* InMemoryTimeEntriesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryTimeEntriesStore.swift; sourceTree = "<group>"; };
+		DBE4F164299A7F1D003DB3EB /* TimeTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				DB7AB3512998310D00ABB6D4 /* Domain */,
 				DB7AB3552998347C00ABB6D4 /* Cache */,
+				DBE4F162299A7E42003DB3EB /* UI */,
 				DB7AB3212997F54400ABB6D4 /* AppDelegate.swift */,
 				DB7AB3232997F54400ABB6D4 /* SceneDelegate.swift */,
 				DB7AB3272997F54400ABB6D4 /* Main.storyboard */,
@@ -189,6 +192,14 @@
 				DBE4F160299A7D78003DB3EB /* InMemoryTimeEntriesStore.swift */,
 			);
 			path = InMemory;
+			sourceTree = "<group>";
+		};
+		DBE4F162299A7E42003DB3EB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				DBE4F164299A7F1D003DB3EB /* TimeTrackingViewController.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +309,7 @@
 				DB7AB3242997F54400ABB6D4 /* SceneDelegate.swift in Sources */,
 				DBE4F146299A3935003DB3EB /* CacheTimeEntryUseCase.swift in Sources */,
 				DB7AB3532998319400ABB6D4 /* TimeEntry.swift in Sources */,
+				DBE4F165299A7F1D003DB3EB /* TimeTrackingViewController.swift in Sources */,
 				DBE4F142299A38A7003DB3EB /* LocalTimeEntry.swift in Sources */,
 				DBE4F144299A3904003DB3EB /* TimeEntriesStore.swift in Sources */,
 				DBE4F161299A7D78003DB3EB /* InMemoryTimeEntriesStore.swift in Sources */,
