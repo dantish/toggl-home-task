@@ -8,12 +8,6 @@
 import XCTest
 @testable import ToggleHomeTask
 
-struct LocalTimeEntry: Equatable {
-    let id: UUID
-    let startTime: Date
-    let endTime: Date
-}
-
 protocol TimeEntriesStore {
     typealias InsertionResult = Result<Void, Error>
     typealias InsertionCompletion = (InsertionResult) -> Void
