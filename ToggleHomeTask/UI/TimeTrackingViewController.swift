@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TimeTrackingViewController: UIViewController {
+final class TimeTrackingViewController: UIViewController, TimeTrackingView {
     @IBOutlet weak var stopwatchLabel: UILabel!
     @IBOutlet weak var toggleButton: UIButton!
 
