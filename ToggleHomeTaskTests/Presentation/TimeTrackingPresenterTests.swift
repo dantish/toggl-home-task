@@ -8,52 +8,6 @@
 import XCTest
 @testable import ToggleHomeTask
 
-protocol TimeTrackingView {
-    func display(_ viewModel: TimeTrackingViewModel)
-}
-
-final class TimeTrackingPresenter {
-    let view: TimeTrackingView
-    let stopwatchValueFormatter: (Int) -> String
-
-    init(view: TimeTrackingView, stopwatchValueFormatter: @escaping (Int) -> String) {
-        self.view = view
-        self.stopwatchValueFormatter = stopwatchValueFormatter
-    }
-
-    func didLoadView() {
-        view.display(TimeTrackingViewModel(
-            stopwatchValue: stopwatchValueFormatter(0),
-            toggleActionTitle: "Start",
-            isToggleActionDestructive: false
-        ))
-    }
-
-    func didStartStopwatch() {
-        view.display(TimeTrackingViewModel(
-            stopwatchValue: stopwatchValueFormatter(0),
-            toggleActionTitle: "Stop",
-            isToggleActionDestructive: true
-        ))
-    }
-
-    func didUpdateStopwatch(with value: Int) {
-        view.display(TimeTrackingViewModel(
-            stopwatchValue: stopwatchValueFormatter(value),
-            toggleActionTitle: "Stop",
-            isToggleActionDestructive: true
-        ))
-    }
-
-    func didStopStopwatch() {
-        view.display(TimeTrackingViewModel(
-            stopwatchValue: stopwatchValueFormatter(0),
-            toggleActionTitle: "Start",
-            isToggleActionDestructive: false
-        ))
-    }
-}
-
 final class TimeTrackingPresenterTests: XCTestCase {
 
     func test_init_doesNotSendMessagesToView() {
