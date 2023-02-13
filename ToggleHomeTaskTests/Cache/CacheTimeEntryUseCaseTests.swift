@@ -42,16 +42,13 @@ final class CacheTimeEntryUseCase {
 final class CacheTimeEntryUseCaseTests: XCTestCase {
 
     func test_init_doesNotMessageStoreUponCreation() {
-        let store = TimeEntriesStoreSpy()
-
-        let _ = CacheTimeEntryUseCase(store: store)
+        let (_, store) = makeSUT()
 
         XCTAssertEqual(store.receivedMessages, [])
     }
 
     func test_save_requestsTimeEntryInsertion() {
-        let store = TimeEntriesStoreSpy()
-        let sut = CacheTimeEntryUseCase(store: store)
+        let (sut, store) = makeSUT()
         let model = uniqueTimeEntry()
         let local = LocalTimeEntry(
             id: model.id,
@@ -65,6 +62,12 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
     }
 
     // MARK: - Helpers
+
+    private func makeSUT() -> (sut: CacheTimeEntryUseCase, store: TimeEntriesStoreSpy) {
+        let store = TimeEntriesStoreSpy()
+        let sut = CacheTimeEntryUseCase(store: store)
+        return (sut, store)
+    }
 
     private func uniqueTimeEntry() -> TimeEntry {
         TimeEntry(
