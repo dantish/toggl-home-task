@@ -51,63 +51,28 @@ final class LoadTimeEntriesFromCacheUseCaseTests: XCTestCase {
     func test_load_failsOnRetrievalError() {
         let (sut, store) = makeSUT()
         let retrievalError = NSError(domain: "any error", code: 0)
-        let exp = expectation(description: "Wait for load completion")
 
-        var receivedError: Error?
-        sut.load { result in
-            if case let .failure(error) = result {
-                receivedError = error
-            }
-
-            exp.fulfill()
-        }
-
-        store.completeRetrieval(with: retrievalError)
-        wait(for: [exp], timeout: 1.0)
-
-        XCTAssertEqual(receivedError as NSError?, retrievalError)
+        expect(sut, toCompleteWith: .failure(retrievalError), when: {
+            store.completeRetrieval(with: retrievalError)
+        })
     }
 
     func test_load_deliversNoTimeEntriesOnEmptyCache() {
         let (sut, store) = makeSUT()
-        let exp = expectation(description: "Wait for load completion")
 
-        sut.load { receivedResult in
-            switch receivedResult {
-            case let .success(receivedTimeEntries):
-                XCTAssertEqual(receivedTimeEntries, [])
-
-            default:
-                XCTFail("Expected successful result with no entries, but got \(receivedResult) instead")
-            }
-
-            exp.fulfill()
-        }
-
-        store.completeRetrievalWithEmptyCache()
-        wait(for: [exp], timeout: 1.0)
+        expect(sut, toCompleteWith: .success([]), when: {
+            store.completeRetrievalWithEmptyCache()
+        })
     }
 
     func test_load_deliversCachedTimeEntriesOnNonEmptyCache() {
         let (sut, store) = makeSUT()
         let timeEntries = [uniqueTimeEntry(), uniqueTimeEntry()]
         let localTimeEntries = timeEntries.map { LocalTimeEntry(id: $0.id, startTime: $0.startTime, endTime: $0.endTime) }
-        let exp = expectation(description: "Wait for load completion")
 
-        sut.load { receivedResult in
-            switch receivedResult {
-            case let .success(receivedTimeEntries):
-                XCTAssertEqual(receivedTimeEntries, timeEntries)
-
-            default:
-                XCTFail("Expected successful result with cached time entries, but got \(receivedResult) instead")
-            }
-
-            exp.fulfill()
-        }
-
-        store.completeRetrieval(with: localTimeEntries)
-        wait(for: [exp], timeout: 1.0)
+        expect(sut, toCompleteWith: .success(timeEntries), when: {
+            store.completeRetrieval(with: localTimeEntries)
+        })
     }
 
     // MARK: - Helpers
@@ -124,6 +89,34 @@ final class LoadTimeEntriesFromCacheUseCaseTests: XCTestCase {
             startTime: Date(timeIntervalSinceNow: -10),
             endTime: Date()
         )
+    }
+
+    private func expect(
+        _ sut: LoadTimeEntriesFromCacheUseCase,
+        toCompleteWith expectedResult: LoadTimeEntriesFromCacheUseCase.LoadResult,
+        when action: () -> Void,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        let exp = expectation(description: "Wait for load completion")
+
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedTimeEntries), .success(expectedTimeEntries)):
+                XCTAssertEqual(receivedTimeEntries, expectedTimeEntries, file: file, line: line)
+
+            case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+
+            default:
+                XCTFail("Expected result \(expectedResult), got \(receivedResult) instead", file: file, line: line)
+            }
+
+            exp.fulfill()
+        }
+
+        action()
+        wait(for: [exp], timeout: 1.0)
     }
 
 }
