@@ -28,6 +28,35 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
     func test_save_failsOnInsertionError() {
         let (sut, store) = makeSUT()
         let insertionError = NSError(domain: "any error", code: 0)
+
+        expect(sut, toCompleteWithError: insertionError, when: {
+            store.completeInsertion(with: insertionError)
+        })
+    }
+
+    func test_save_succeedsOnSuccessfulInsertion() {
+        let (sut, store) = makeSUT()
+
+        expect(sut, toCompleteWithError: nil, when: {
+            store.completeInsertionSuccessfully()
+        })
+    }
+
+    // MARK: - Helpers
+
+    private func makeSUT() -> (sut: CacheTimeEntryUseCase, store: TimeEntriesStoreSpy) {
+        let store = TimeEntriesStoreSpy()
+        let sut = CacheTimeEntryUseCase(store: store)
+        return (sut, store)
+    }
+
+    private func expect(
+        _ sut: CacheTimeEntryUseCase,
+        toCompleteWithError expectedError: NSError?,
+        when action: () -> Void,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
         let exp = expectation(description: "Wait for save completion")
 
         var receivedError: Error?
@@ -39,34 +68,10 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
             exp.fulfill()
         }
 
-        store.completeInsertion(with: insertionError)
+        action()
         wait(for: [exp], timeout: 1.0)
 
-        XCTAssertEqual(receivedError as NSError?, insertionError)
-    }
-
-    func test_save_succeedsOnSuccessfulInsertion() {
-        let (sut, store) = makeSUT()
-        let exp = expectation(description: "Wait for save completion")
-
-        sut.save(uniqueTimeEntry().model) { result in
-            if case let .failure(error) = result {
-                XCTFail("Expected to complete successfully, but got \(error) instead")
-            }
-
-            exp.fulfill()
-        }
-
-        store.completeInsertionSuccessfully()
-        wait(for: [exp], timeout: 1.0)
-    }
-
-    // MARK: - Helpers
-
-    private func makeSUT() -> (sut: CacheTimeEntryUseCase, store: TimeEntriesStoreSpy) {
-        let store = TimeEntriesStoreSpy()
-        let sut = CacheTimeEntryUseCase(store: store)
-        return (sut, store)
+        XCTAssertEqual(receivedError as NSError?, expectedError, file: file, line: line)
     }
 
 }
