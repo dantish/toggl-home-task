@@ -51,6 +51,15 @@ final class InMemoryTimeEntriesStoreTests: XCTestCase {
         expect(sut, toRetrieve: .success([timeEntry]))
     }
 
+    func test_retrieve_hasNoSideEffectsOnNonEmptyCache() {
+        let sut = makeSUT()
+        let timeEntry = uniqueTimeEntry().local
+
+        insert(timeEntry, to: sut)
+
+        expect(sut, toRetrieveTwice: .success([timeEntry]))
+    }
+
     func test_insert_deliversNoErrorOnEmptyCache() {
         let sut = makeSUT()
 
