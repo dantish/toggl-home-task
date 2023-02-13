@@ -18,12 +18,7 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
 
     func test_save_requestsTimeEntryInsertion() {
         let (sut, store) = makeSUT()
-        let model = uniqueTimeEntry()
-        let local = LocalTimeEntry(
-            id: model.id,
-            startTime: model.startTime,
-            endTime: model.endTime
-        )
+        let (model, local) = uniqueTimeEntry()
 
         sut.save(model) { _ in }
 
@@ -36,7 +31,7 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
         let exp = expectation(description: "Wait for save completion")
 
         var receivedError: Error?
-        sut.save(uniqueTimeEntry()) { result in
+        sut.save(uniqueTimeEntry().model) { result in
             if case let .failure(error) = result {
                 receivedError = error
             }
@@ -54,7 +49,7 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let exp = expectation(description: "Wait for save completion")
 
-        sut.save(uniqueTimeEntry()) { result in
+        sut.save(uniqueTimeEntry().model) { result in
             if case let .failure(error) = result {
                 XCTFail("Expected to complete successfully, but got \(error) instead")
             }
@@ -72,14 +67,6 @@ final class CacheTimeEntryUseCaseTests: XCTestCase {
         let store = TimeEntriesStoreSpy()
         let sut = CacheTimeEntryUseCase(store: store)
         return (sut, store)
-    }
-
-    private func uniqueTimeEntry() -> TimeEntry {
-        TimeEntry(
-            id: UUID(),
-            startTime: Date(timeIntervalSinceNow: -10),
-            endTime: Date()
-        )
     }
 
 }

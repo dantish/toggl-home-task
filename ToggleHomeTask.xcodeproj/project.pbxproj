@@ -19,6 +19,7 @@
 		DBE4F146299A3935003DB3EB /* CacheTimeEntryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */; };
 		DBE4F14B299A3C84003DB3EB /* TimeEntriesStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F14A299A3C84003DB3EB /* TimeEntriesStoreSpy.swift */; };
 		DBE4F14D299A3CE0003DB3EB /* LoadTimeEntriesFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F14C299A3CE0003DB3EB /* LoadTimeEntriesFromCacheUseCaseTests.swift */; };
+		DBE4F152299A6A63003DB3EB /* CacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F151299A6A63003DB3EB /* CacheTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTimeEntryUseCase.swift; sourceTree = "<group>"; };
 		DBE4F14A299A3C84003DB3EB /* TimeEntriesStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesStoreSpy.swift; sourceTree = "<group>"; };
 		DBE4F14C299A3CE0003DB3EB /* LoadTimeEntriesFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTimeEntriesFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		DBE4F151299A6A63003DB3EB /* CacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				DBE4F14A299A3C84003DB3EB /* TimeEntriesStoreSpy.swift */,
+				DBE4F151299A6A63003DB3EB /* CacheTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBE4F152299A6A63003DB3EB /* CacheTestHelpers.swift in Sources */,
 				DB7AB35C2998393B00ABB6D4 /* CacheTimeEntryUseCaseTests.swift in Sources */,
 				DBE4F14B299A3C84003DB3EB /* TimeEntriesStoreSpy.swift in Sources */,
 				DBE4F14D299A3CE0003DB3EB /* LoadTimeEntriesFromCacheUseCaseTests.swift in Sources */,

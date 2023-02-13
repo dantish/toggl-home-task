@@ -75,11 +75,10 @@ final class LoadTimeEntriesFromCacheUseCaseTests: XCTestCase {
 
     func test_load_deliversCachedTimeEntriesOnNonEmptyCache() {
         let (sut, store) = makeSUT()
-        let timeEntries = [uniqueTimeEntry(), uniqueTimeEntry()]
-        let localTimeEntries = timeEntries.map { LocalTimeEntry(id: $0.id, startTime: $0.startTime, endTime: $0.endTime) }
+        let (models, local) = uniqueTimeEntries()
 
-        expect(sut, toCompleteWith: .success(timeEntries), when: {
-            store.completeRetrieval(with: localTimeEntries)
+        expect(sut, toCompleteWith: .success(models), when: {
+            store.completeRetrieval(with: local)
         })
     }
 
@@ -89,14 +88,6 @@ final class LoadTimeEntriesFromCacheUseCaseTests: XCTestCase {
         let store = TimeEntriesStoreSpy()
         let sut = LoadTimeEntriesFromCacheUseCase(store: store)
         return (sut, store)
-    }
-
-    private func uniqueTimeEntry() -> TimeEntry {
-        TimeEntry(
-            id: UUID(),
-            startTime: Date(timeIntervalSinceNow: -10),
-            endTime: Date()
-        )
     }
 
     private func expect(
