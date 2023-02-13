@@ -9,8 +9,14 @@ import XCTest
 @testable import ToggleHomeTask
 
 final class LoadTimeEntriesFromCacheUseCase {
-    init(store: TimeEntriesStore) {
+    private let store: TimeEntriesStore
 
+    init(store: TimeEntriesStore) {
+        self.store = store
+    }
+
+    func load() {
+        store.retrieve { _ in }
     }
 }
 
@@ -20,6 +26,14 @@ final class LoadTimeEntriesFromCacheUseCaseTests: XCTestCase {
         let (_, store) = makeSUT()
 
         XCTAssertEqual(store.receivedMessages, [])
+    }
+
+    func test_load_requestsCacheRetrieval() {
+        let (sut, store) = makeSUT()
+
+        sut.load()
+
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
 
     // MARK: - Helpers

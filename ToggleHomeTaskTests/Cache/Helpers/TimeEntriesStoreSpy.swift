@@ -11,6 +11,7 @@ import Foundation
 final class TimeEntriesStoreSpy: TimeEntriesStore {
     enum Message: Equatable {
         case insert(LocalTimeEntry)
+        case retrieve
     }
 
     private(set) var receivedMessages: [Message] = []
@@ -28,5 +29,9 @@ final class TimeEntriesStoreSpy: TimeEntriesStore {
 
     func completeInsertionSuccessfully(at index: Int = 0) {
         insertionCompletions[index](.success(()))
+    }
+
+    func retrieve(completion: @escaping RetrievalCompletion) {
+        receivedMessages.append(.retrieve)
     }
 }
