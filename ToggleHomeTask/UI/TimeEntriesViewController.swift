@@ -7,10 +7,6 @@
 
 import UIKit
 
-struct TimeEntryViewModel {
-    let title: String
-}
-
 final class TimeEntriesViewController: UITableViewController {
     private var tableModel = [TimeEntryViewModel]() {
         didSet { tableView.reloadData() }
