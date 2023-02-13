@@ -23,6 +23,7 @@
 		DBE4F155299A705F003DB3EB /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F154299A705F003DB3EB /* SharedTestHelpers.swift */; };
 		DBE4F157299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F156299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift */; };
 		DBE4F15D299A7302003DB3EB /* InMemoryTimeEntriesStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F15C299A7302003DB3EB /* InMemoryTimeEntriesStoreTests.swift */; };
+		DBE4F161299A7D78003DB3EB /* InMemoryTimeEntriesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE4F160299A7D78003DB3EB /* InMemoryTimeEntriesStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		DBE4F154299A705F003DB3EB /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		DBE4F156299A70DB003DB3EB /* LoadTimeEntriesFromCacheUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTimeEntriesFromCacheUseCase.swift; sourceTree = "<group>"; };
 		DBE4F15C299A7302003DB3EB /* InMemoryTimeEntriesStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryTimeEntriesStoreTests.swift; sourceTree = "<group>"; };
+		DBE4F160299A7D78003DB3EB /* InMemoryTimeEntriesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryTimeEntriesStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 		DB7AB3552998347C00ABB6D4 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				DBE4F15E299A7D62003DB3EB /* Infrastructure */,
 				DBE4F141299A38A7003DB3EB /* LocalTimeEntry.swift */,
 				DBE4F143299A3904003DB3EB /* TimeEntriesStore.swift */,
 				DBE4F145299A3935003DB3EB /* CacheTimeEntryUseCase.swift */,
@@ -170,6 +173,22 @@
 				DBE4F15C299A7302003DB3EB /* InMemoryTimeEntriesStoreTests.swift */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		DBE4F15E299A7D62003DB3EB /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				DBE4F15F299A7D69003DB3EB /* InMemory */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		DBE4F15F299A7D69003DB3EB /* InMemory */ = {
+			isa = PBXGroup;
+			children = (
+				DBE4F160299A7D78003DB3EB /* InMemoryTimeEntriesStore.swift */,
+			);
+			path = InMemory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +300,7 @@
 				DB7AB3532998319400ABB6D4 /* TimeEntry.swift in Sources */,
 				DBE4F142299A38A7003DB3EB /* LocalTimeEntry.swift in Sources */,
 				DBE4F144299A3904003DB3EB /* TimeEntriesStore.swift in Sources */,
+				DBE4F161299A7D78003DB3EB /* InMemoryTimeEntriesStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

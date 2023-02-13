@@ -15,19 +15,6 @@
 import XCTest
 @testable import ToggleHomeTask
 
-final class InMemoryTimeEntriesStore: TimeEntriesStore {
-    private var timeEntries: [LocalTimeEntry] = []
-
-    func insert(_ timeEntry: ToggleHomeTask.LocalTimeEntry, completion: @escaping InsertionCompletion) {
-        timeEntries.append(timeEntry)
-        completion(.success(()))
-    }
-
-    func retrieve(completion: @escaping RetrievalCompletion) {
-        completion(.success(timeEntries))
-    }
-}
-
 final class InMemoryTimeEntriesStoreTests: XCTestCase {
 
     func test_retrieve_deliversEmptyOnEmptyCache() {
