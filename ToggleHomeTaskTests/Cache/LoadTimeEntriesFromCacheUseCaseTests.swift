@@ -22,9 +22,8 @@ final class LoadTimeEntriesFromCacheUseCase {
             switch result {
             case let .failure(error):
                 completion(.failure(error))
-
-            default:
-                break
+            case .success:
+                completion(.success([]))
             }
         }
     }
@@ -64,6 +63,26 @@ final class LoadTimeEntriesFromCacheUseCaseTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
 
         XCTAssertEqual(receivedError as NSError?, retrievalError)
+    }
+
+    func test_load_deliversNoTimeEntriesOnEmptyCache() {
+        let (sut, store) = makeSUT()
+        let exp = expectation(description: "Wait for load completion")
+
+        sut.load { receivedResult in
+            switch receivedResult {
+            case let .success(receivedTimeEntries):
+                XCTAssertEqual(receivedTimeEntries, [])
+
+            default:
+                XCTFail("Expected successful result with no entries, but got \(receivedResult) instead")
+            }
+
+            exp.fulfill()
+        }
+
+        store.completeRetrievalWithEmptyCache()
+        wait(for: [exp], timeout: 1.0)
     }
 
     // MARK: - Helpers

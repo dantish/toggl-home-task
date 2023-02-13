@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TimeEntry {
+struct TimeEntry: Equatable {
     let id: UUID
     let startTime: Date
     let endTime: Date
